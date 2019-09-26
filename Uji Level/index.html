@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Link Boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Link Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>CRUD Boostrap</title>
+    <!-- CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            margin-top: 30px;
+            padding-left: 300px;
+            padding-right: 300px;
+            margin-left: 170px;
+        }
+
+        .input-group {
+            width: 450px;
+            margin-bottom: 20px;
+        }
+
+        .radio {
+            margin-bottom: 20px;
+        }
+
+        .col {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Input -->
+    <div class="container">
+        <h1 style="margin-bottom: 20px; font-size: 35px;">Input Data</h1>
+
+        <!-- Input grub -->
+        <form class="needs-validation" novalidate>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nama</span>
+                </div>
+                <input type="text" aria-label="First name" class="form-control" placeholder="Nama Depan" required>
+                <input type="text" aria-l abel="Last name" class="form-control" placeholder="Nama Belakang" required>
+                <div class="invalid-feedback">
+                    Mohon untuk mengisi kolom Nama !
+                </div>
+                <div class="valid-feedback">
+                    Nama valid
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">No HP</span>
+                </div>
+                <input type="text" aria-label="Nomor Handphone" class="form-control" placeholder="Nomor Telepon"
+                    required>
+                <div class="invalid-feedback">
+                    Mohon untuk mengisi kolom Nomor telepon !
+                </div>
+                <div class="valid-feedback">
+                    No HP valid
+                </div>
+            </div>
+
+            <!-- input kelamin -->
+            <h3 style="font-size: 20px;"><b>Gender</b></h3>
+            <div class="radio">
+                <div class="row">
+                    <div class="col">
+                        <input type="radio" name="kelamin"> Pria
+                        <input type="radio" name="kelamin" style="margin-left: 15px;"> Wanita
+                    </div>
+                </div>
+            </div>
+
+            <!-- input jenjang -->
+            <div class="input-group" style="margin-top: -20px;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Jenjang</span>
+                </div>
+                <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                    <option selected>Choose...</option>
+                    <option value="1">TK</option>
+                    <option value="2">SD</option>
+                    <option value="3">SMP</option>
+                </select>
+            </div>
+
+            <!-- input hobi -->
+            <h3 style="font-size: 20px;"><b>Hobi</b></h3>
+            <div class="checkbox">
+                <div class="row">
+                    <div class="col">
+                        <input type="checkbox"> Membaca
+                        <input type="checkbox" style="margin-left: 10px;"> Menulis
+                        <input type="checkbox" style="margin-left: 10px;"> Basket
+                    </div>
+                </div>
+            </div>
+
+            <!-- input alamat -->
+            <div class="input-group" style="height: 100px;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Alamat</span>
+                </div>
+                <textarea class="form-control" aria-label="With textarea" required></textarea>
+                <div class="invalid-feedback">
+                    Mohon untuk mengisi kolom Alamat !
+                </div>
+                <div class="valid-feedback">
+                    Alamat valid
+                </div>
+            </div>
+
+            <!-- button submit -->
+            <div>
+                <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+
+    </div>
+    </form>
+
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+    <!-- Script jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
