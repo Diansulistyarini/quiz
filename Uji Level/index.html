@@ -8,6 +8,9 @@
     <!-- Link Boostrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
     <!-- Link Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>CRUD Boostrap</title>
@@ -15,13 +18,6 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-        }
-
-        .container {
-            margin-top: 30px;
-            padding-left: 300px;
-            padding-right: 300px;
-            margin-left: 170px;
         }
 
         .input-group {
@@ -42,8 +38,8 @@
 <body>
 
     <!-- Input -->
-    <div class="container">
-        <h1 style="margin-bottom: 20px; font-size: 35px;">Input Data</h1>
+    <div class="container" style="width: 480px;margin: 0 auto;">
+        <h1 style="margin-bottom: 20px; font-size: 35px; margin-top: 20px;  ">Input Data</h1>
 
         <!-- Input grub -->
         <form class="needs-validation" novalidate>
@@ -51,8 +47,10 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Nama</span>
                 </div>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Nama Depan" required>
-                <input type="text" aria-l abel="Last name" class="form-control" placeholder="Nama Belakang" required>
+                <input id="namade" type="text" aria-label="First name" class="form-control" placeholder="Nama Depan"
+                    required>
+                <input id="namabe" type="text" aria-l abel="Last name" class="form-control" placeholder="Nama Belakang"
+                    required>
                 <div class="invalid-feedback">
                     Mohon untuk mengisi kolom Nama !
                 </div>
@@ -65,8 +63,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">No HP</span>
                 </div>
-                <input type="text" aria-label="Nomor Handphone" class="form-control" placeholder="Nomor Telepon"
-                    required>
+                <input id="nomorhp" type="text" aria-label="Nomor Handphone" class="form-control"
+                    placeholder="Nomor Telepon" required>
                 <div class="invalid-feedback">
                     Mohon untuk mengisi kolom Nomor telepon !
                 </div>
@@ -80,23 +78,26 @@
             <div class="radio">
                 <div class="row">
                     <div class="col">
-                        <input type="radio" name="kelamin"> Pria
-                        <input type="radio" name="kelamin" style="margin-left: 15px;"> Wanita
+                        <input id="kelaminpria" type="radio" name="kelamin"> Pria
+                        <input id="nomorhp" type="radio" name="kelamin" style="margin-left: 15px;"> Wanita
                     </div>
                 </div>
             </div>
 
             <!-- input jenjang -->
-            <div class="input-group" style="margin-top: -20px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Jenjang</span>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <span class="input-group-text">Jenjang</span>
+                    </div>
+                    <select class="custom-select" required>
+                        <option value="">Choose...</option>
+                        <option value="1">TK</option>
+                        <option value="2">SD</option>
+                        <option value="3">SMP</option>
+                    </select>
+                    <div class="invalid-feedback">Mohon untuk memilih jenjang</div>
                 </div>
-                <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                    <option selected>Choose...</option>
-                    <option value="1">TK</option>
-                    <option value="2">SD</option>
-                    <option value="3">SMP</option>
-                </select>
             </div>
 
             <!-- input hobi -->
@@ -127,28 +128,70 @@
 
             <!-- button submit -->
             <div>
-                <button class="btn btn-primary" type="submit">Submit form</button>
+                <button id="btnSubmit" class="btn btn-primary" type="submit">Submit form</button>
             </div>
 
     </div>
     </form>
 
+    <!-- dasboard -->
+    <hr style="width: 900px;">
+    <div class="container">
+        <div id="data" class="row">
+        </div>
+    </div>
+
     <script>
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                var forms = document.getElementsByClassName('needs-validation');
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
+        // database
+        let data = [
+            ["Frenza", "puki", "TK", "Bencong", "Ngajak Ribut", "Fortun"]
+        ]
+
+        let placeholder = document.getElementById("data")
+
+        function tampil() {
+            placeholder.innerHTML = ""
+            data.forEach(dta => {
+                placeholder.innerHTML +=
+                    '<div class="card text-white bg-primary mb-3 mr-3 col-6" style="max-width: 18rem;"> <div class="card-header">' +
+                    dta[0] + dta[1] +
+                    '</div> <div class="card-body"> <p class="card-text">Jenjang :' +
+                    dta[2] +
+                    '</p> <p class="card-text">Gender :' +
+                    dta[3] +
+                    '</p> <p class="card-text">Hobi : ' +
+                    dta[4] +
+                    '</p> <p class="card-text">Alamat : ' +
+                    dta[5] +
+                    '</p> </div> </div>'
+            });
+        }
+
+        // ouput data
+        $("#btnSubmit").click(function () {
+            event.preventDefault()
+            let namaDpn = $('#namade').val()
+            let namaBlkg = $('#namabe').val()
+            let newData = [namaDpn, namaBlkg, "TK", "Bencong", "Ngajak Ribut", "Fortun"]
+            data.push(newData)
+            tampil()
+        })
+
+        // $(document).ready(function () {
+        //     'use strict';
+        //     window.addEventListener('load', function () {
+        //         var forms = document.getElementsByClassName('needs-validation');
+        //         var validation = Array.prototype.filter.call(forms, function (form) {
+        //             form.addEventListener('submit', function (event) {
+        //                 if (form.checkValidity() === false) {
+        //                     event.preventDefault();
+        //                     event.stopPropagation();
+        //                 }
+        //                 form.classList.add('was-validated');
+        //             }, false);
+        //         });
+        //     }, false);
+        // });
     </script>
 
     <!-- Script jQuery -->
